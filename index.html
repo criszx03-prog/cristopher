@@ -1,0 +1,1972 @@
+<!-- =========================
+AC WATCHES - INDEX.HTML
+========================= -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AC WATCHES</title>
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f8f7f3;
+    color:#111;
+    font-family:'Montserrat', sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+header{
+    width:100%;
+    height:90px;
+    background:#f7f6f2;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid rgba(0,0,0,0.06);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 60px;
+}
+
+/* LEFT EMPTY */
+.header-left{
+    width:20%;
+}
+
+/* CENTER */
+.header-center{
+    width:60%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+}
+.logo {
+    width: auto;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
+
+/* TITLE */
+.brand-title{
+    font-family:'Cinzel', serif;
+    font-size:24px;
+    letter-spacing:3px;
+    font-weight:500;
+    color:#111;
+}
+
+/* RIGHT NAV */
+.header-right{
+    width:20%;
+    display:flex;
+    justify-content:flex-end;
+    gap:35px;
+    align-items:center;
+}
+
+.nav-link{
+    position:relative;
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+    letter-spacing:2px;
+    font-weight:500;
+    cursor:pointer;
+}
+
+/* GOLD HOVER LINE */
+.nav-link::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:1px;
+    background:#c8a96b;
+    transition:0.4s;
+}
+
+.nav-link:hover::after{
+    width:100%;
+}
+
+/* =========================
+DROPDOWN
+========================= */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:35px;
+    right:0;
+
+    width:220px;
+    background:white;
+
+    border:1px solid rgba(0,0,0,0.08);
+
+    display:none;
+    flex-direction:column;
+
+    padding:15px 0;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.dropdown-menu a{
+    text-decoration:none;
+    color:#111;
+    padding:14px 25px;
+    transition:0.3s;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.dropdown-menu a:hover{
+    background:#f3f3f3;
+    padding-left:35px;
+}
+
+.dropdown.active .dropdown-menu{
+    display:flex;
+}
+
+/* =========================
+MAIN
+========================= */
+
+main{
+    padding-top:140px;
+    width:90%;
+    margin:auto;
+}
+
+/* =========================
+BRAND SECTION
+========================= */
+
+.brand-section{
+    display:none;
+    animation:fade 0.5s ease;
+}
+
+.brand-section.active{
+    display:block;
+}
+
+.brand-title-section{
+    font-family:'Cinzel', serif;
+    font-size:42px;
+    margin-bottom:50px;
+    letter-spacing:4px;
+}
+
+/* =========================
+PRODUCT GRID
+========================= */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+}
+
+/* CARD */
+
+.product-card{
+    background:white;
+    border:1px solid rgba(0,0,0,0.06);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.product-card img{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+}
+
+.product-info{
+    padding:28px;
+}
+
+.product-info h3{
+    font-family:'Cinzel', serif;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+.product-info p{
+    color:#666;
+    font-size:14px;
+}
+
+/* =========================
+ADD CART BUTTON
+========================= */
+
+.add-cart-btn{
+    margin-top:20px;
+
+    width:100%;
+    height:48px;
+
+    border:none;
+
+    background:#111;
+    color:white;
+
+    font-size:12px;
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.add-cart-btn:hover{
+    background:#c8a96b;
+}
+
+/* =========================
+CART
+========================= */
+
+.cart-button{
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-10px;
+    right:-14px;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    background:#c8a96b;
+    color:white;
+
+    font-size:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cart-panel{
+    position:fixed;
+
+    top:90px;
+    right:-420px;
+
+    width:400px;
+    height:calc(100vh - 90px);
+
+    background:white;
+
+    border-left:1px solid rgba(0,0,0,0.08);
+
+    z-index:3000;
+
+    transition:0.4s;
+
+    padding:30px;
+
+    overflow-y:auto;
+
+    box-shadow:-10px 0 30px rgba(0,0,0,0.08);
+}
+
+.cart-panel.active{
+    right:0;
+}
+
+.cart-title{
+    font-family:'Cinzel', serif;
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+.cart-item{
+    padding-bottom:20px;
+    margin-bottom:20px;
+
+    border-bottom:1px solid rgba(0,0,0,0.08);
+}
+
+.cart-item h3{
+    font-family:'Cinzel', serif;
+    margin-bottom:10px;
+}
+
+.cart-price{
+    color:#c8a96b;
+    font-family:'Cinzel', serif;
+}
+
+/* =========================
+MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.75);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:2000;
+
+    padding:40px;
+}
+
+.modal-content{
+    width:100%;
+    max-width:1200px;
+
+    background:white;
+
+    padding:50px;
+
+    position:relative;
+}
+
+.close-modal{
+    position:absolute;
+    top:20px;
+    right:25px;
+
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* MODAL BODY */
+
+.modal-body{
+    display:flex;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+/* LEFT */
+
+.gallery{
+    flex:1;
+    min-width:320px;
+}
+
+.main-image{
+    width:100%;
+    height:550px;
+    object-fit:cover;
+}
+
+.thumbnails{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.thumbnails img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+
+    cursor:pointer;
+
+    border:1px solid transparent;
+
+    transition:0.3s;
+}
+
+.thumbnails img:hover{
+    border:1px solid #c8a96b;
+}
+
+/* RIGHT */
+
+.details{
+    flex:1;
+    min-width:320px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.details h1{
+    font-family:'Cinzel', serif;
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.details h2{
+    color:#c8a96b;
+    margin-top:25px;
+    margin-bottom:15px;
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+.details p{
+    line-height:1.8;
+    color:#555;
+}
+
+.price{
+    margin-top:35px;
+    font-size:34px;
+    font-family:'Cinzel', serif;
+}
+
+/* =========================
+ANIMATION
+========================= */
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    header{
+        padding:0 20px;
+    }
+
+    .brand-title{
+        font-size:16px;
+        text-align:center;
+    }
+
+    .modal-content{
+        padding:30px;
+    }
+
+    .main-image{
+        height:350px;
+    }
+
+}
+
+
+
+.add-to-cart-btn{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    background: black;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.add-to-cart-btn:hover{
+    opacity: 0.85;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-left"></div>
+
+    <div class="header-center">
+
+        <img src="https://1000logos.net/wp-content/uploads/2017/05/Rolex-logo-500x278.png" alt="Rolex" class="logo">
+
+        <h1 class="brand-title">
+            BIENVENIDO A AC WATCHES
+        </h1>
+
+    </div>
+
+    <div class="header-right">
+
+        <a class="nav-link">INICIO</a>
+
+        <div class="dropdown" id="dropdown">
+
+            <a class="nav-link" onclick="toggleDropdown()">
+                MARCAS
+            </a>
+
+            <div class="dropdown-menu">
+
+                <a onclick="showBrand('marca1')">
+                    Rolex
+                </a>
+
+                <a onclick="showBrand('marca2')">
+                    AP
+                </a>
+
+                <a onclick="showBrand('marca3')">
+                    Cartier
+                </a>
+
+                <a onclick="showBrand('marca4')">
+                    Richard Mille
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- CARRITO -->
+        <div class="cart-button">
+
+            <a class="nav-link"
+            onclick="toggleCart()">
+                CARRITO
+            </a>
+
+            <div class="cart-count"
+            id="cartCount">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- PANEL CARRITO -->
+
+<div class="cart-panel" id="cartPanel">
+
+    <h2 class="cart-title">
+        TU CARRITO
+    </h2>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total" id="cartTotal">
+        TOTAL: $0
+    </div>
+
+    <button class="checkout-btn"
+    onclick="openCheckout()">
+        CHECKOUT
+    </button>
+
+</div>
+
+<main>
+
+<!-- =========================
+MARCA 1
+========================= -->
+
+<section class="brand-section active" id="marca1">
+
+    <h2 class="brand-title-section">
+        Rolex
+    </h2>
+
+    <div class="product-grid">
+
+        <!-- PRODUCTO 1 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Royal Chronograph',
+        'Movimiento automático suizo.',
+        '$12,500',
+        [
+        'https://goldcenter.com.co/img-rolex/watches-models/m126234-0051-gallery1-landscape.webp'
+        ])">
+
+            <img src="https://goldcenter.com.co/img-rolex/watches-models/m126234-0051-gallery1-landscape.webp">
+
+            <div class="product-info">
+                <h3>Datejust</h3>
+                <p>Luxury Swiss Movement</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Datejust','$12,500')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Golden Prestige',
+        'Caja bañada en oro.',
+        '$18,900',
+        [
+        'https://galileo.tsqsa.com/FTPImagenes/rolex-img/watches-models/m126618lb-0002-gallery1-landscape.webp'
+        ])">
+
+            <img src="https://galileo.tsqsa.com/FTPImagenes/rolex-img/watches-models/m126618lb-0002-gallery1-landscape.webp">
+
+            <div class="product-info">
+                <h3>Submariner</h3>
+                <p>Exclusive Gold Edition</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Submariner','$18,900')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Elite Skeleton',
+        'Diseño skeleton premium.',
+        '$9,700',
+        [
+        'https://gsbazzi.com/rolex-watch-assets/2025/model_gallery_assets_landscape/Slide1_landscape/m126508-0008.webp'
+        ])">
+
+            <img src="https://gsbazzi.com/rolex-watch-assets/2025/model_gallery_assets_landscape/Slide1_landscape/m126508-0008.webp">
+
+            <div class="product-info">
+                <h3>Dayjust</h3>
+                <p>Modern Luxury Design</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Dayjust','$9,700')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 4 -->
+        <div class="product-card"
+        onclick="openModal(
+        'GMT Master II',
+        'Reloj profesional para viajeros internacionales.',
+        '$15,600',
+        [
+        'https://content.rolex.com/v7/dam/watches/models/m126710blro-0001/m126710blro-0001_v01.jpg'
+        ])">
+
+            <img src="https://bauer.com.co/wp-content/uploads/2025/06/m126710grnr-0004-2.webp">
+
+            <div class="product-info">
+                <h3>GMT Master II</h3>
+                <p>Travel Luxury Edition</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('GMT Master II','$15,600')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 5 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Yacht Master',
+        'Diseño náutico elegante en acero y oro.',
+        '$21,400',
+        [
+        'https://content.rolex.com/v7/dam/watches/models/m226658-0001/m226658-0001_v01.jpg'
+        ])">
+
+            <img src="https://galileo.tsqsa.com/FTPImagenes/rolex-img/watches-models-26/m126622-0001-gallery1-landscape.webp">
+
+            <div class="product-info">
+                <h3>Yacht Master</h3>
+                <p>Nautical Prestige Collection</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Yacht Master','$21,400')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 6 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Sky Dweller',
+        'Calendario anual y doble zona horaria premium.',
+        '$24,800',
+        [
+        'https://content.rolex.com/v7/dam/watches/models/m336933-0002/m336933-0002_v01.jpg'
+        ])">
+
+            <img src="https://galileo.tsqsa.com/FTPImagenes/rolex-img/watches-models/m336934-0006-gallery1-landscape.webp">
+
+            <div class="product-info">
+                <h3>Sky Dweller</h3>
+                <p>Ultimate Executive Watch</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Sky Dweller','$24,800')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+MARCA 2
+========================= -->
+
+<section class="brand-section" id="marca2">
+
+    <h2 class="brand-title-section">
+        AP
+    </h2>
+
+   <div class="product-grid">
+
+        <!-- PRODUCTO 1 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Royal Oak Offshore',
+        'Caja de acero inoxidable. Movimiento automático AP calibre 3120.',
+        '$32,000',
+        [
+        'https://cdn-images.farfetch-contents.com/23/82/96/13/23829613_53770831_1000.jpg'
+        ])">
+
+            <img src="https://cdn-images.farfetch-contents.com/23/82/96/13/23829613_53770831_1000.jpg">
+
+            <div class="product-info">
+                <h3>Royal Oak Offshore</h3>
+                <p>Luxury Steel Collection</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Royal Oak Offshore','$32,000')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Code 11.59',
+        'Diseño contemporáneo. Cristal de zafiro curvado premium.',
+        '$27,500',
+        [
+        'https://hips.hearstapps.com/hmg-prod/images/audemars-06-1677157925.png?resize=980:*'
+        ])">
+
+            <img src="https://hips.hearstapps.com/hmg-prod/images/audemars-06-1677157925.png?resize=980:*">
+
+            <div class="product-info">
+                <h3>Code 11.59</h3>
+                <p>Modern Swiss Elegance</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Code 11.59','$27,500')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Royal Oak Gold',
+        'Caja en oro rosa 18k. Movimiento automático suizo.',
+        '$41,800',
+        [
+        'https://wristaficionado.com/cdn/shop/files/audemars-piguet-royal-oak-selfwinding-tourbillon-rose-gold-brown-dial-26730or-gg-1320or-01-audemars-piguet-40713015754996.png?v=1712498203&width=1080'
+        ])">
+
+            <img src="https://wristaficionado.com/cdn/shop/files/audemars-piguet-royal-oak-selfwinding-tourbillon-rose-gold-brown-dial-26730or-gg-1320or-01-audemars-piguet-40713015754996.png?v=1712498203&width=1080">
+
+            <div class="product-info">
+                <h3>Royal Oak Gold</h3>
+                <p>Rose Gold Edition</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Royal Oak Gold','$41,800')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 4 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Royal Oak Chronograph',
+        'Cronógrafo automático de lujo con diseño deportivo.',
+        '$36,900',
+        [
+        'https://watchrapport.com/cdn/shop/files/audemars-piguet-royal-oak-chronograph-blue-dial-steel-men-s-watch-26331stoo1220st02-427843.jpg'
+        ])">
+
+            <img src="https://i0.wp.com/grail-watch.com/wp-content/uploads/2019/04/RO26315ST-OO-1256ST-01Soldier-jpg-e1554921639886.jpg?fit=1277%2C1897&ssl=1">
+
+            <div class="product-info">
+                <h3>Royal Oak Chronograph</h3>
+                <p>Sport Chronograph Edition</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Royal Oak Chronograph','$36,900')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 5 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Royal Oak Concept',
+        'Diseño futurista con mecanismo skeleton visible.',
+        '$58,000',
+        [
+        'https://www.audemarspiguet.com/content/dam/ap/com/products/watches/MTR009307.00/importer/standup.png.transform.approductmain.png'
+        ])">
+
+            <img src="data:image/jpeg;base64,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">
+
+            <div class="product-info">
+                <h3>Royal Oak Concept</h3>
+                <p>Futuristic Skeleton Design</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Royal Oak Concept','$58,000')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 6 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Millenary',
+        'Caja ovalada elegante con maquinaria visible.',
+        '$29,700',
+        [
+        'https://www.audemarspiguet.com/content/dam/ap/com/products/watches/MTR001436.00/importer/standup.png.transform.approductmain.png'
+        ])">
+
+            <img src="data:image/jpeg;base64,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">
+
+            <div class="product-info">
+                <h3>Millenary</h3>
+                <p>Elegant Mechanical Art</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Millenary','$29,700')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+MARCA 3
+========================= -->
+
+<section class="brand-section" id="marca3">
+
+    <h2 class="brand-title-section">
+        Cartier
+    </h2>
+
+   <div class="product-grid">
+
+        <!-- PRODUCTO 1 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Cartier Santos',
+        'Diseño icónico de aviación. Caja cuadrada en acero.',
+        '$11,900',
+        [
+        'https://www.cartier.com/dam/rcq/car/ne/tM/qn/TE/S5/aB/mz/Ff/9D/Wy/AA/netMqnTES5aBmzFf9DWyAA.jpeg.transform.carprodcard.jpeg'
+        ])">
+
+            <img src="https://www.cartier.com/dam/rcq/car/ne/tM/qn/TE/S5/aB/mz/Ff/9D/Wy/AA/netMqnTES5aBmzFf9DWyAA.jpeg.transform.carprodcard.jpeg">
+
+            <div class="product-info">
+                <h3>Cartier Santos</h3>
+                <p>Classic Aviation Luxury</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Cartier Santos','$11,900')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Ballon Bleu',
+        'Caja redonda elegante. Corona decorada con zafiro azul.',
+        '$14,400',
+        [
+        'https://www.cartier.com/dam/rcq/car/22/79/37/7/2279377.jpeg.transform.carprodcard.jpeg'
+        ])">
+
+            <img src="https://www.cartier.com/dam/rcq/car/22/79/37/7/2279377.jpeg.transform.carprodcard.jpeg">
+
+            <div class="product-info">
+                <h3>Ballon Bleu</h3>
+                <p>French Luxury Design</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Ballon Bleu','$14,400')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Tank Must',
+        'Diseño minimalista clásico. Correa de cuero premium.',
+        '$9,800',
+        [
+        'https://www.cartier.com/dam/rcq/car/21/82/24/7/2182247.jpeg.transform.carprodcard.png'
+        ])">
+
+            <img src="https://www.cartier.com/dam/rcq/car/21/82/24/7/2182247.jpeg.transform.carprodcard.png">
+
+            <div class="product-info">
+                <h3>Tank Must</h3>
+                <p>Elegant Heritage Collection</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Tank Must','$9,800')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 4 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Roadster',
+        'Diseño deportivo y elegante de Cartier.',
+        '$13,500',
+        [
+        'https://www.cartier.com/dam/rcq/car/TQ/ET/7p/lx/Tu/ax/EX/HG/CU/Be/fQ/TQET7plxTuaxEXHGCUBefQ.jpeg.transform.carprodcardhd.jpeg'
+        ])">
+
+            <img src="https://www.cartier.com/dam/rcq/car/TQ/ET/7p/lx/Tu/ax/EX/HG/CU/Be/fQ/TQET7plxTuaxEXHGCUBefQ.jpeg.transform.carprodcardhd.jpeg">
+
+            <div class="product-info">
+                <h3>Roadster</h3>
+                <p>Sport Luxury Collection</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Roadster','$13,500')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 5 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Pasha de Cartier',
+        'Diseño refinado con corona distintiva y movimiento automático.',
+        '$16,200',
+        [
+        'https://www.cartier.com/dam/rcq/car/1s/HL/kf/3S/wW/G7/Ff/99/Ks/AA/1sHLkf3SwWG7Ff99KsAA.jpeg.transform.carprodcard.jpeg'
+        ])">
+
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcToDOizvzNa1fLF78Lrg18icBLO-R_AIY8asjw5ceroIoFrLfk_QjI5yuMTuON5FMYk6d-K-r5DpUe9TKScA1euRLX-UzE8lqGEDcxebU-hWCzno5dIHsyub4jl">
+
+            <div class="product-info">
+                <h3>Pasha de Cartier</h3>
+                <p>Luxury Round Collection</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Pasha de Cartier','$16,200')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 6 -->
+        <div class="product-card"
+        onclick="openModal(
+        'Panthère',
+        'Diseño elegante inspirado en la joyería clásica francesa.',
+        '$18,700',
+        [
+        'https://www.cartier.com/dam/rcq/car/B7/3g/kS/uJ/RJ/W9/Pk/y4/4B/Ym/ug/B73gkSuJRJW9Pky44BYmug.jpeg.transform.carprodcard.png'
+        ])">
+
+            <img src="https://www.cartier.com/dam/rcq/car/B7/3g/kS/uJ/RJ/W9/Pk/y4/4B/Ym/ug/B73gkSuJRJW9Pky44BYmug.jpeg.transform.carprodcard.png">
+
+            <div class="product-info">
+                <h3>Panthère</h3>
+                <p>French Iconic Elegance</p>
+
+                <button class="add-cart-btn"
+                onclick="event.stopPropagation(); addToCart('Panthère','$18,700')">
+                    AÑADIR AL CARRITO
+                </button>
+
+            </div>
+
+        </div>
+
+</div>
+
+        </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <span class="close-modal"
+        onclick="closeModal()">
+            ×
+        </span>
+
+        <div class="modal-body">
+
+            <div class="gallery">
+
+                <img id="mainImage"
+                class="main-image"
+                src="">
+
+                <div class="thumbnails"
+                id="thumbnails"></div>
+
+            </div>
+
+            <div class="details">
+
+                <h1 id="productTitle"></h1>
+
+                <h2>ESPECIFICACIONES</h2>
+
+                <p id="productSpecs"></p>
+
+                <div class="price"
+                id="productPrice"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+PANEL CARRITO
+========================= -->
+
+<div class="cart-panel" id="cartPanel">
+
+    <h2 class="cart-title">
+        TU CARRITO
+    </h2>
+
+    <div id="cartItems"></div>
+
+    <!-- RESUMEN -->
+    <div class="cart-summary">
+
+        <div class="cart-total">
+            TOTAL:
+            <span id="cartTotal">
+                $0
+            </span>
+        </div>
+
+        <button class="checkout-btn"
+        onclick="openCheckout()">
+            FINALIZAR COMPRA
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+CHECKOUT MODAL
+========================= -->
+
+<div class="checkout-modal"
+id="checkoutModal">
+
+    <div class="checkout-content">
+
+        <span class="close-checkout"
+        onclick="closeCheckout()">
+            ×
+        </span>
+
+        <h2 class="checkout-title">
+            CHECKOUT
+        </h2>
+
+        <div class="checkout-form">
+
+            <input type="text"
+            placeholder="Nombre completo">
+
+            <input type="email"
+            placeholder="Correo electrónico">
+
+            <input type="text"
+            placeholder="Dirección">
+
+            <input type="text"
+            placeholder="Número de tarjeta">
+
+            <input type="text"
+            placeholder="MM/AA">
+
+            <input type="text"
+            placeholder="CVV">
+
+            <button class="pay-btn"
+            onclick="completePurchase()">
+                PAGAR AHORA
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+/* =========================
+CART TOTAL + CHECKOUT
+========================= */
+
+.cart-summary{
+    margin-top:30px;
+}
+
+.cart-total{
+    margin-top:25px;
+    font-size:24px;
+    font-family:'Cinzel', serif;
+    color:#111;
+}
+
+.checkout-btn{
+    margin-top:25px;
+
+    width:100%;
+    height:50px;
+
+    border:none;
+
+    background:#c8a96b;
+    color:white;
+
+    font-size:13px;
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.checkout-btn:hover{
+    background:#111;
+}
+
+/* CHECKOUT MODAL */
+
+.checkout-modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.75);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:5000;
+}
+
+.checkout-content{
+    width:95%;
+    max-width:500px;
+
+    background:white;
+
+    padding:40px;
+}
+
+.checkout-content h2{
+    font-family:'Cinzel', serif;
+    margin-bottom:25px;
+}
+
+.checkout-input{
+    width:100%;
+    height:50px;
+
+    margin-bottom:20px;
+
+    padding:0 15px;
+
+    border:1px solid rgba(0,0,0,0.15);
+
+    font-size:14px;
+}
+
+.pay-btn{
+    width:100%;
+    height:50px;
+
+    border:none;
+
+    background:#111;
+    color:white;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+}
+
+.checkout-btn{
+    width:100%;
+    height:55px;
+
+    border:none;
+
+    background:#111;
+    color:white;
+
+    letter-spacing:2px;
+    font-size:12px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.checkout-btn:hover{
+    background:#c8a96b;
+}
+
+/* =========================
+CHECKOUT MODAL
+========================= */
+
+.checkout-modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.75);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:5000;
+
+    padding:30px;
+}
+
+.checkout-content{
+    width:100%;
+    max-width:520px;
+
+    background:white;
+
+    padding:45px;
+
+    position:relative;
+}
+
+.checkout-title{
+    font-family:'Cinzel', serif;
+    font-size:32px;
+
+    margin-bottom:30px;
+}
+
+.checkout-form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.checkout-form input{
+    width:100%;
+    height:52px;
+
+    padding:0 18px;
+
+    border:1px solid rgba(0,0,0,0.1);
+
+    outline:none;
+
+    font-size:14px;
+}
+
+.pay-btn{
+    margin-top:10px;
+
+    width:100%;
+    height:55px;
+
+    border:none;
+
+    background:#111;
+    color:white;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+
+    transition:0.3s;
+}
+
+.pay-btn:hover{
+    background:#c8a96b;
+}
+
+.close-checkout{
+    position:absolute;
+
+    top:18px;
+    right:22px;
+
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+
+
+.add-to-cart-btn{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    background: black;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.add-to-cart-btn:hover{
+    opacity: 0.85;
+}
+
+
+</style>
+
+<script>
+
+/* =========================
+CART
+========================= */
+
+let cart = [];
+
+function addToCart(name,price){
+
+    cart.push({
+        name:name,
+        price:price
+    });
+
+    updateCart();
+
+}
+
+function updateCart(){
+
+    const cartItems =
+    document.getElementById('cartItems');
+
+    const cartCount =
+    document.getElementById('cartCount');
+
+    const cartTotal =
+    document.getElementById('cartTotal');
+
+    cartItems.innerHTML='';
+
+    let total = 0;
+
+    cart.forEach((item,index) => {
+
+        total += Number(
+            item.price
+            .replace('$','')
+            .replace(',','')
+        );
+
+        cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+            <h3>${item.name}</h3>
+
+            <div class="cart-price">
+                ${item.price}
+            </div>
+
+            <button
+            onclick="removeFromCart(${index})"
+            style="
+            margin-top:12px;
+            border:none;
+            background:#111;
+            color:white;
+            padding:10px 16px;
+            cursor:pointer;
+            letter-spacing:1px;
+            font-size:11px;
+            ">
+                ELIMINAR
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+    cartCount.innerText = cart.length;
+
+    cartTotal.innerText =
+    '$' + total.toLocaleString();
+
+}
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+function toggleCart(){
+
+    document
+    .getElementById('cartPanel')
+    .classList
+    .toggle('active');
+
+}
+
+function openCheckout(){
+
+    if(cart.length === 0){
+
+        alert('Tu carrito está vacío');
+
+        return;
+
+    }
+
+    document
+    .getElementById('checkoutModal')
+    .style.display='flex';
+
+}
+
+function closeCheckout(){
+
+    document
+    .getElementById('checkoutModal')
+    .style.display='none';
+
+}
+
+function completePurchase(){
+
+    alert('Compra realizada exitosamente');
+
+    cart = [];
+
+    updateCart();
+
+    closeCheckout();
+
+    document
+    .getElementById('cartPanel')
+    .classList
+    .remove('active');
+
+}
+
+</script>
+
+<script>
+
+/* =========================
+DROPDOWN
+========================= */
+
+function toggleDropdown(){
+
+    document
+    .getElementById('dropdown')
+    .classList
+    .toggle('active');
+
+}
+
+/* =========================
+SHOW BRAND
+========================= */
+
+function showBrand(id){
+
+    const sections =
+    document.querySelectorAll('.brand-section');
+
+    sections.forEach(section => {
+
+        section.classList.remove('active');
+
+    });
+
+    document
+    .getElementById(id)
+    .classList
+    .add('active');
+
+}
+
+/* =========================
+OPEN MODAL
+========================= */
+
+function openModal(title,specs,price,images){
+
+    document
+    .getElementById('modal')
+    .style.display='flex';
+
+    document
+    .getElementById('productTitle')
+    .innerText = title;
+
+    document
+    .getElementById('productSpecs')
+    .innerText = specs;
+
+    document
+    .getElementById('productPrice')
+    .innerText = price;
+
+    document
+    .getElementById('mainImage')
+    .src = images[0];
+
+    const thumbnails =
+    document.getElementById('thumbnails');
+
+    thumbnails.innerHTML = '';
+
+    images.forEach(img => {
+
+        const thumb =
+        document.createElement('img');
+
+        thumb.src = img;
+
+        thumb.onclick = function(){
+
+            document
+            .getElementById('mainImage')
+            .src = img;
+
+        };
+
+        thumbnails.appendChild(thumb);
+
+    });
+
+}
+
+/* =========================
+CLOSE MODAL
+========================= */
+
+function closeModal(){
+
+    document
+    .getElementById('modal')
+    .style.display='none';
+
+}
+
+/* =========================
+CART
+========================= */
+
+
+
+
+</script>
+
+
+
+<!-- =========================
+MARCA 4
+========================= -->
+
+<section class="brand-section" id="marca4">
+
+    <h2 class="brand-title-section">
+        Richard Mille
+    </h2>
+
+   <div class="product-grid">
+
+        <!-- PRODUCTO 1 -->
+        <div class="product-card"
+        onclick="openModal(
+        'RM 11-03',
+        'Cronógrafo futurista ultraligero.',
+        '$215,000',
+        [
+        'https://images.watchfinder.co.uk/images/watchfinderimages/media/articles/Richard-Mille-RM11-03.jpg'
+        ]
+        )">
+
+            <img src="https://img.chrono24.com/images/uhren/34812777-k37b8ayfxsg47utdcmdqm01s-ExtraLarge.jpg">
+
+            <div class="product-info">
+
+                <h3>
+                    RM 11-03
+                </h3>
+
+                <p>
+                    Cronógrafo futurista ultraligero
+                </p>
+
+                <span>
+                    $215,000
+                </span>
+
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('RM 11-03','$215,000')">
+                    Añadir al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="product-card"
+        onclick="openModal(
+        'RM 27-04',
+        'Edición Rafael Nadal en carbono.',
+        '$1,050,000',
+        [
+        'https://www.luxurybazaar.com/grey-market/wp-content/uploads/2021/05/richard-mille-rm27-04.jpg'
+        ]
+        )">
+
+            <img src="https://img.chrono24.com/images/uhren/32756269-o7h4ecr9q1hy9iqdysdgwf7i-ExtraLarge.jpg">
+
+            <div class="product-info">
+
+                <h3>
+                    RM 27-04
+                </h3>
+
+                <p>
+                    Rafael Nadal edición carbono
+                </p>
+
+                <span>
+                    $1,050,000
+                </span>
+
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('RM 27-04','$1,050,000')">
+                    Añadir al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="product-card"
+        onclick="openModal(
+        'RM 07-01',
+        'Elegancia deportiva femenina moderna.',
+        '$185,000',
+        [
+        'https://monochrome-watches.com/wp-content/uploads/2020/01/Richard-Mille-RM07-01.jpg'
+        ]
+        )">
+
+            <img src="https://wristaficionado.com/cdn/shop/files/richard-mille-rm-07-01-rose-gold-diamond-set-onyx-dial-richard-mille-42614823485684.jpg?v=1726400509&width=800">
+
+            <div class="product-info">
+
+                <h3>
+                    RM 07-01
+                </h3>
+
+                <p>
+                    Elegancia deportiva moderna
+                </p>
+
+                <span>
+                    $185,000
+                </span>
+
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('RM 07-01','$185,000')">
+                    Añadir al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 4 -->
+        <div class="product-card"
+        onclick="openModal(
+        'RM 35-03',
+        'Automático deportivo innovador.',
+        '$320,000',
+        [
+        'https://deployant.com/wp-content/uploads/2023/09/RM35-03.jpg'
+        ]
+        )">
+
+            <img src="https://mavaniandco.com/cdn/shop/files/richard-mille-rafael-nadal-automatic-winding-rm-35-03-richard-mille-40267089248500_1600x.jpg?v=1716816737">
+
+            <div class="product-info">
+
+                <h3>
+                    RM 35-03
+                </h3>
+
+                <p>
+                    Automático deportivo innovador
+                </p>
+
+                <span>
+                    $320,000
+                </span>
+
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('RM 35-03','$320,000')">
+                    Añadir al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 5 -->
+        <div class="product-card"
+        onclick="openModal(
+        'RM 67-02',
+        'Ultrafino inspirado en atletas.',
+        '$410,000',
+        [
+        'https://swisswatches-magazine.com/wp-content/uploads/2020/07/RM67-02.jpg'
+        ]
+        )">
+
+            <img src="https://wristaficionado.com/cdn/shop/files/richard-mille-rm-67-02-extra-flat-alexis-pinturault-edition-2024-richard-mille-41698827567348.jpg?v=1716567478&width=2160">
+
+            <div class="product-info">
+
+                <h3>
+                    RM 67-02
+                </h3>
+
+                <p>
+                    Ultrafino inspirado en atletas
+                </p>
+
+                <span>
+                    $410,000
+                </span>
+
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('RM 67-02','$410,000')">
+                    Añadir al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO 6 -->
+        <div class="product-card"
+        onclick="openModal(
+        'RM 055',
+        'Diseño Bubba Watson titanio.',
+        '$295,000',
+        [
+        'https://professionalwatches.com/wp-content/uploads/2021/08/RM055.jpg'
+        ]
+        )">
+
+            <img src="https://img.chrono24.com/images/uhren/32833542-2vvreliatzvyaqlvr94cktro-ExtraLarge.jpg">
+
+            <div class="product-info">
+
+                <h3>
+                    RM 055
+                </h3>
+
+                <p>
+                    Bubba Watson titanio extremo
+                </p>
+
+                <span>
+                    $295,000
+                </span>
+
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('RM 055','$295,000')">
+                    Añadir al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+   </div>
+
+</section>
+
+
+</body>
+</html>
